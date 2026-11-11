@@ -1,25 +1,29 @@
-## Общие принципы
+[English](CONTRIBUTING.MD) | [Русский](CONTRIBUTING.ru.md)
 
-- Вся работа ведётся через GitHub
-- Любые изменения — только через Pull Request
-- Каждая задача имеет одного ответственного (owner)
-- Никакой работы «просто так», без задачи
+# Contributing
 
-## Модель веток
+## General Principles
 
-Используется упрощённая модель веток:
+- All work is managed through GitHub.
+- All changes must be submitted through a Pull Request.
+- Every task must have one designated owner.
+- No work should be done without an associated task.
 
-- main — стабильная версия (production)
-- dev — интеграционная ветка
-- feature/* — разработка новых функций
-- hotfix/* — срочные исправления
+## Branching Model
 
-## Коммиты
+The project uses a simplified branching model:
 
-Используется соглашение **Conventional Commits**:
+- `main` — stable production branch.
+- `dev` — integration branch.
+- `feature/*` — branches for new feature development.
+- `hotfix/*` — branches for urgent fixes.
 
-- `feat:` — новая функциональность
-- `fix:` — исправление ошибок
-- `chore:` — технические изменения
-- `docs:` — документация
-- `refactor:` — рефакторинг без изменения логики
+## Commits
+
+The project follows **Conventional Commits**:
+
+- `feat:` — a new feature.
+- `fix:` — a bug fix.
+- `chore:` — maintenance or technical changes.
+- `docs:` — documentation changes.
+- `refactor:` — code restructuring without changing behavior.
