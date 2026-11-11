@@ -1,0 +1,50 @@
+services:
+  postgres:
+    image: postgres:16
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - weaver-local
+
+  migrate:
+    build: .
+    entrypoint: ["./migrate"]
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    profiles:
+      - manual
+    networks:
+      - weaver-local
+
+  edge:
+    build:
+      context: .
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - weaver-local
+
+volumes:
+  postgres_data:
+
+networks:
+  weaver-local:
+    external: true
+    name: weaver-local
+
