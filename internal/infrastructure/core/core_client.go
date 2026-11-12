@@ -38,7 +38,7 @@ func (f *coreClient) SendMessage(ctx context.Context, message domain.Message, co
 		return nil, fmt.Errorf("encode message: %w", err)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, f.baseURL+"/events", &body)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, f.baseURL+"/v1"+"/events", &body)
 	if err != nil {
 		return nil, fmt.Errorf("create core request: %w", err)
 	}
